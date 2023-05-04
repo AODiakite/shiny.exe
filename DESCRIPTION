@@ -1,0 +1,23 @@
+Package: shiny.exe
+Type: Package
+Title: Schedule a task that run a shinyApp then creat a shortcut in current directory
+Version: 0.1.0
+Authors@R: 
+    person(given = "Abdoul Oudouss",
+           family = "Diakité",
+           role = c("aut", "cre"),
+           email = "abdouloudoussdiakite@gmail.com")
+Description: It provides real-time data from the Casablanca Stock Exchange. The objective is to facilitate access to data for all users of the R programming language. 
+             It includes a variety of data accessible just by function call.
+License: GPL-2
+URL: https://github.com/AODiakite
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+Imports: 
+    shiny,
+    taskscheduleR,
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
