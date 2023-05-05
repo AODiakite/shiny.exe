@@ -10,10 +10,11 @@
 #' @param display.mode see `display.mode` parameter in `runApp()`
 #' @param test.mode see `test.mode` parameter in `runApp()`
 #'
-#' @return
+#' @return launch a shiny application
 #' @export
 #'
 #' @examples
+#'\dontrun{ hostWin( appDir = getwd(), port = getOption("shiny.port"), launch.browser = getOption("shiny.launch.browser", interactive()), host = getOption("shiny.host", "127.0.0.1"), workerId = "", quiet = FALSE, display.mode = c("auto", "normal", "showcase"), test.mode = getOption("shiny.testmode", FALSE))}
 hostWin <- function(
     appDir = getwd(),
     port = getOption("shiny.port"),

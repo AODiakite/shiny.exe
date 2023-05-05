@@ -2,13 +2,14 @@
 #'
 #' @param appName the name of you shortcut or application
 #' @param port see `port` parameter in `runApp()`
-#' @param host see `host` parameter in `runApp()`
+#' @param host see `host` parameter in {runApp()}. If `host = 'public'`, the application will be launched on the public server to which you are connected. Thus, all other devices connected to the same server will be able to access the application through the link of your IPv4 extended by the port. You can stop the application by leaving the terminal opened by the shortcut.
 #' @param appDir see `host` parameter in `runApp()`
 #'
-#' @return
+#' @return character(o)
 #' @export
 #'
 #' @examples
+#' \dontrun{shiny.exe(appName = "MaApp", host = 'public')}
 shiny.exe <- function(
     appName,
     port = getOption("shiny.port"),
@@ -16,7 +17,9 @@ shiny.exe <- function(
     appDir = getwd()){
 
   if(is.null(port)) port = "getOption('shiny.port')"
-  texte = c("library(shiny.exe)",paste0( "hostWin(
+  texte = c("#' Please do not rename this file !",
+  "library(shiny.exe)",
+  paste0( "hostWin(
     appDir = '", appDir,"',
     port = ",port,",
     launch.browser = TRUE,
