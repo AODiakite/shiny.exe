@@ -10,11 +10,11 @@
 #'
 #' @examples
 create_task <- function(task_name, script_path, schedule = "ONCE", start_time = "00:00"){
-  # Installer et charger le package taskscheduleR
-  if (!requireNamespace("taskscheduleR")) utils::install.packages("taskscheduleR")
+  # Install and load the taskscheduleR package
+  if (!requireNamespace("taskscheduleR")) utils::install.packages("taskscheduleR",dependencies = TRUE)
   tryCatch(
     {
-      # Supprimer une tache existante avec le meme nom
+      # Delete an existing task with the same name
       taskscheduleR::taskscheduler_delete(taskname = task_name)
       taskscheduleR::taskscheduler_create(
         taskname = task_name,
@@ -24,7 +24,7 @@ create_task <- function(task_name, script_path, schedule = "ONCE", start_time = 
       )
     },
     error = function(e) {
-      # Creer une nouvelle tache
+      # Create a new task
       taskscheduleR::taskscheduler_create(
         taskname = task_name,
         rscript = script_path,

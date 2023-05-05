@@ -14,12 +14,18 @@ shiny.exe(
 \arguments{
 \item{appName}{the name of you shortcut or application}
 
-\item{port}{see `port` parameter in `runApp()`}
+\item{port}{see `port` parameter in `shiny::runApp()`}
 
-\item{host}{see `host` parameter in `runApp()`}
+\item{host}{see `host` parameter in `shiny::runApp()`. If `host = 'public'`, the application will be launched on the public server to which you are connected. Thus, all other devices connected to the same server will be able to access the application through the link of your IPv4 extended by the port. You can stop the application by leaving the terminal opened by the shortcut.}
 
-\item{appDir}{see `host` parameter in `runApp()`}
+\item{appDir}{see `host` parameter in `shiny::runApp()`}
+}
+\value{
+character(0)
 }
 \description{
 shiny.exe
+}
+\examples{
+\dontrun{shiny.exe(appName = "MaApp", host = 'public')}
 }

@@ -2,37 +2,37 @@
 #'
 #' @param task_name a character string with the name of the task. Defaults to the filename. Should not contain any spaces.
 #' @param shortcut_name a character string with the name of the task. Defaults to the filename. Should not contain any spaces.
-#' @param appDir see `host` parameter in `runApp()`
+#' @param appDir see `host` parameter in `shiny::runApp()`
 #'
 #' @return character(0)
 #' @noRd
 #'
 #' @examples
 create_task_shortcut <- function(task_name, shortcut_name,appDir) {
-  # Verifiez si les arguments sont valides
+  # Check parameters
   if (!is.character(task_name) || length(task_name) != 1) {
-    stop("L'argument 'task_name' doit etre une chaine de caracteres de longueur 1")
+    stop("The 'task_name' argument must be a character string of length 1")
   }
   if (!is.character(shortcut_name) || length(shortcut_name) != 1) {
-    stop("L'argument 'shortcut_name' doit etre une chaine de caracteres de longueur 1")
+    stop("The 'shortcut_name' argument must be a character string of length 1")
   }
 
-  # Specifiez le chemin vers le bureau
+  # Specify the path to the shiny app
   desktop_path <- appDir
 
-  # Verifiez si le chemin du bureau est valide
+  # Check if the desktop path is valid
   if (!dir.exists(desktop_path)) {
-    stop("Le chemin du bureau n'existe pas:", desktop_path)
+    stop("Desktop path does not exist:", desktop_path)
   }
 
-  # Specifiez les details du raccourci
+  # Specify shortcut details
   target_path <- "C:\\Windows\\System32\\schtasks.exe"
   arguments <- paste0("/run /tn \"", task_name, "\"")
   icon_path <- target_path
 
-  # Verifiez si le fichier cible existe
+  # Check if the target file exists
   if (!file.exists(target_path)) {
-    stop("Le fichier cible n'existe pas:", target_path)
+    stop("Target file does not exist:", target_path)
   }
 
   # Create shortcut

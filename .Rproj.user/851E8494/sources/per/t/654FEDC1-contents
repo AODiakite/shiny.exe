@@ -1,6 +1,6 @@
 Package: shiny.exe
 Type: Package
-Title: Schedule a Task that Run a shinyApp then Creat a shortcut in Current Directory
+Title: Schedule a Task that Run a shinyApp then Creat a Shortcut in Current Directory
 Version: 0.1.0
 Authors@R: 
     person(given = "Abdoul Oudouss",
