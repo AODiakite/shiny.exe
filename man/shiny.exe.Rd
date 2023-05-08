@@ -27,5 +27,5 @@ character(0)
 shiny.exe
 }
 \examples{
-\dontrun{shiny.exe(appName = "MaApp", host = 'public')}
+\dontrun{shiny.exe(appName = "MyApp", host = 'public')}
 }

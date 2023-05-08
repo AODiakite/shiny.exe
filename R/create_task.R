@@ -10,27 +10,33 @@
 #'
 #' @examples
 create_task <- function(task_name, script_path, schedule = "ONCE", start_time = "00:00"){
-  # Install and load the taskscheduleR package
-  if (!requireNamespace("taskscheduleR")) utils::install.packages("taskscheduleR",dependencies = TRUE)
-  tryCatch(
-    {
-      # Delete an existing task with the same name
-      taskscheduleR::taskscheduler_delete(taskname = task_name)
-      taskscheduleR::taskscheduler_create(
-        taskname = task_name,
-        rscript = script_path,
-        schedule = schedule,
-        starttime = start_time
-      )
-    },
-    error = function(e) {
-      # Create a new task
-      taskscheduleR::taskscheduler_create(
-        taskname = task_name,
-        rscript = script_path,
-        schedule = schedule,
-        starttime = start_time
-      )
-    }
-  )
+  if (Sys.info()["sysname"] == "Windows"){
+
+    if(!requireNamespace("taskscheduleR", quietly = TRUE))
+      utils::install.packages("taskscheduleR",dependencies = TRUE)
+
+    requireNamespace("taskscheduleR", quietly = TRUE)
+    tryCatch(
+      {
+        # Delete an existing task with the same name
+        taskscheduleR::taskscheduler_delete(taskname = task_name)
+        taskscheduleR::taskscheduler_create(
+          taskname = task_name,
+          rscript = script_path,
+          schedule = schedule,
+          starttime = start_time
+        )
+      },
+      error = function(e) {
+        # Create a new task
+        taskscheduleR::taskscheduler_create(
+          taskname = task_name,
+          rscript = script_path,
+          schedule = schedule,
+          starttime = start_time
+        )
+      }
+    )
+  }
 }
+

@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{shiny.exe(appName = "MaApp", host = 'public')}
+#' \dontrun{shiny.exe(appName = "MyApp", host = 'public')}
 shiny.exe <- function(
     appName,
     port = getOption("shiny.port"),
@@ -17,9 +17,11 @@ shiny.exe <- function(
     appDir = getwd()){
 
   if(is.null(port)) port = "getOption('shiny.port')"
+  # Choose host function depending the OS type
+  host_func <- ifelse(Sys.info()["sysname"] == "Windows", "hostWin", "hostUnix")
   texte = c("#' Please do not rename this file !",
   "library(shiny.exe)",
-  paste0( "hostWin(
+  paste0(host_func,"(
     appDir = '", appDir,"',
     port = ",port,",
     launch.browser = TRUE,
@@ -32,7 +34,6 @@ shiny.exe <- function(
     texte,
     paste0(appName,".R")
   )
-  create_task(appName,paste0(appDir,"/",appName,".R"))
   create_task_shortcut(appName,appName,appDir)
 }
 

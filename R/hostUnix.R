@@ -1,5 +1,5 @@
 
-#' hostWin
+#' hostUnix
 #'
 #' @param appDir see `host` parameter in `shiny::runApp()`
 #' @param port see `port` parameter in `runApp()`
@@ -15,17 +15,13 @@
 #'
 #' @examples
 #'\dontrun{
-#'hostWin( appDir = getwd(),
-#' port = getOption("shiny.port"),
-#' launch.browser = getOption("shiny.launch.browser",
-#' interactive()),
-#' host = getOption("shiny.host", "127.0.0.1"),
-#' workerId = "",
-#' quiet = FALSE,
-#' display.mode = c("auto", "normal", "showcase"),
-#' test.mode = getOption("shiny.testmode", FALSE))
-#'}
-hostWin <- function(
+#' hostUnix(appDir = getwd(), port = getOption("shiny.port"),
+#'  launch.browser = getOption("shiny.launch.browser", interactive()),
+#'   host = getOption("shiny.host", "127.0.0.1"), workerId = "",
+#'    quiet = FALSE, display.mode = c("auto", "normal", "showcase"),
+#'     test.mode = getOption("shiny.testmode", FALSE))
+#' }
+hostUnix <- function(
     appDir = getwd(),
     port = getOption("shiny.port"),
     launch.browser = getOption("shiny.launch.browser", interactive()),
@@ -40,10 +36,10 @@ hostWin <- function(
   ip = ifelse(
     ip_host == "public",
     {
-      ipconfig <- system("ipconfig", intern=TRUE)
-      grep_ip <- ipconfig[grep("IPv4", ipconfig)]
-      ipv4 <- gsub(".*? ([[:digit:]])", "\\1", grep_ip)
-      ipv4
+      ifconfig <- system("ifconfig", intern=TRUE)
+      grep_ip <- ifconfig[grep("inet ", ifconfig)]
+      ipv4 <- gsub(".*?inet ([[:digit:].]+).*", "\\1", grep_ip)
+      ipv4[2]
     },
     host
   )
