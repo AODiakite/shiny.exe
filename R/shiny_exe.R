@@ -1,9 +1,9 @@
 #' shiny.exe
 #'
 #' @param appName the name of you shortcut or application
-#' @param port see `port` parameter in `shiny::runApp()`
-#' @param host see `host` parameter in `shiny::runApp()`. If `host = 'public'`, the application will be launched on the public server to which you are connected. Thus, all other devices connected to the same server will be able to access the application through the link of your IPv4 extended by the port. You can stop the application by leaving the terminal opened by the shortcut.
-#' @param appDir see `host` parameter in `shiny::runApp()`
+#' @param port see port parameter in shiny::runApp()
+#' @param host see host parameter in shiny::runApp(). If host = 'public', the application will be launched on the public server to which you are connected. Thus, all other devices connected to the same server will be able to access the application through the link of your IPv4 extended by the port. You can stop the application by leaving the terminal opened by the shortcut.
+#' @param appDir see host parameter in shiny::runApp()
 #'
 #' @return character(0)
 #' @export

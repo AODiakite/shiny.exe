@@ -1,14 +1,14 @@
 
 #' hostUnix
 #'
-#' @param appDir see `host` parameter in `shiny::runApp()`
-#' @param port see `port` parameter in `runApp()`
-#' @param launch.browser see `launch.browser` parameter in `shiny::runApp()`
-#' @param host see `host` parameter in `shiny::runApp()`
-#' @param workerId see `workerId` parameter in `shiny::runApp()`
-#' @param quiet see `quiet` parameter in `shiny::runApp()`
-#' @param display.mode see `display.mode` parameter in `shiny::runApp()`
-#' @param test.mode see `test.mode` parameter in `shiny::runApp()`
+#' @param appDir see host parameter in shiny::runApp()
+#' @param port see port parameter in runApp()
+#' @param launch.browser see launch.browser parameter in shiny::runApp()
+#' @param host see host parameter in shiny::runApp()
+#' @param workerId see workerId parameter in shiny::runApp()
+#' @param quiet see quiet parameter in shiny::runApp()
+#' @param display.mode see display.mode parameter in shiny::runApp()
+#' @param test.mode see test.mode parameter in shiny::runApp()
 #'
 #' @return launch a shiny application
 #' @export

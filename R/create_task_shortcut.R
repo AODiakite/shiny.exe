@@ -2,7 +2,7 @@
 #'
 #' @param task_name a character string with the name of the task. Defaults to the filename. Should not contain any spaces.
 #' @param shortcut_name a character string with the name of the task. Defaults to the filename. Should not contain any spaces.
-#' @param appDir see `host` parameter in `shiny::runApp()`
+#' @param appDir see host parameter in shiny::runApp()
 #'
 #' @return character(0)
 #' @noRd

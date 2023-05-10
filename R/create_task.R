@@ -11,10 +11,6 @@
 #' @examples
 create_task <- function(task_name, script_path, schedule = "ONCE", start_time = "00:00"){
   if (Sys.info()["sysname"] == "Windows"){
-
-    if(!requireNamespace("taskscheduleR", quietly = TRUE))
-      utils::install.packages("taskscheduleR",dependencies = TRUE)
-
     requireNamespace("taskscheduleR", quietly = TRUE)
     tryCatch(
       {
@@ -27,7 +23,7 @@ create_task <- function(task_name, script_path, schedule = "ONCE", start_time = 
           starttime = start_time
         )
       },
-      error = function(e) {
+      error = function(e){
         # Create a new task
         taskscheduleR::taskscheduler_create(
           taskname = task_name,

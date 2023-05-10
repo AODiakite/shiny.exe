@@ -1,13 +1,13 @@
 Package: shiny.exe
 Type: Package
-Title: Schedule a Task that Run a shinyApp then Create a Shortcut in Current Directory
+Title: Schedule a Task that Runs a shinyApp then Creates a Shortcut in Current Directory
 Version: 0.1.0
 Authors@R: 
     person(given = "Abdoul Oudouss",
            family = "Diakité",
            role = c("aut", "cre"),
            email = "abdouloudoussdiakite@gmail.com")
-Description:  Launch an application by a simple click without opening R or RStudio. The package has 2 functions of which only one is essential in its use, `shiny.exe()`. It generates a script in the open shiny project then creates a task that executes this script. After creating the task, the function is responsible for creating a shortcut in the same folder that allows you to launch the task by clicking.If you set `host = 'public'`, the application will be launched on the public server to which you are connected. Thus, all other devices connected to the same server will be able to access the application through the link of your `IPv4` extended by the port. You can stop the application by leaving the terminal opened by the shortcut.
+Description:  Launch an application by a simple click without opening R or RStudio. The package has 2 functions of which only one is essential in its use, shiny.exe(). It generates a script in the open shiny project then creates a task that executes this script. After creating the task, the function is responsible for creating a shortcut in the same folder that allows you to launch the task by clicking.If you set host = 'public', the application will be launched on the public server to which you are connected. Thus, all other devices connected to the same server will be able to access the application through the link of your 'IPv4' extended by the port. You can stop the application by leaving the terminal opened by the shortcut.
 License: GPL-2
 URL: https://github.com/AODiakite
 Encoding: UTF-8
