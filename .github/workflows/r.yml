@@ -18,6 +18,14 @@ permissions:
   contents: read
 
 jobs:
+  setup-r:
+    name: Setup R
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: 4.1.2
   build:
     runs-on: macos-latest
     strategy:
