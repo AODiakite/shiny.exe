@@ -16,21 +16,21 @@ hostWin(
 )
 }
 \arguments{
-\item{appDir}{see `host` parameter in `shiny::runApp()`}
+\item{appDir}{see host parameter in shiny::runApp()}
 
-\item{port}{see `port` parameter in `runApp()`}
+\item{port}{see port parameter in runApp()}
 
-\item{launch.browser}{see `launch.browser` parameter in `shiny::runApp()`}
+\item{launch.browser}{see launch.browser parameter in shiny::runApp()}
 
-\item{host}{see `host` parameter in `shiny::runApp()`}
+\item{host}{see host parameter in shiny::runApp()}
 
-\item{workerId}{see `workerId` parameter in `shiny::runApp()`}
+\item{workerId}{see workerId parameter in shiny::runApp()}
 
-\item{quiet}{see `quiet` parameter in `shiny::runApp()`}
+\item{quiet}{see quiet parameter in shiny::runApp()}
 
-\item{display.mode}{see `display.mode` parameter in `shiny::runApp()`}
+\item{display.mode}{see display.mode parameter in shiny::runApp()}
 
-\item{test.mode}{see `test.mode` parameter in `shiny::runApp()`}
+\item{test.mode}{see test.mode parameter in shiny::runApp()}
 }
 \value{
 launch a shiny application
