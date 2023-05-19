@@ -1,10 +1,10 @@
 [![CRAN/METACRAN](https://www.r-pkg.org/badges/version/shiny.exe)](https://cran.r-project.org/package=shiny.exe)
 ![CRAN/METACRAN](https://badgen.net/cran/license/shiny.exe)
-<!---
+
 
 [![](https://cranlogs.r-pkg.org/badges/shiny.exe)](https://cran.r-project.org/package=shiny.exe)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/shiny.exe?color=brightgreen)](https://cran.r-project.org/package=shiny.exe)
---->
+
 # shiny.exe
 
 
