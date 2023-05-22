@@ -15,7 +15,7 @@ jobs:
       - name: Install R
         uses: r-lib/actions/setup-r@v1
         with:
-          r-version: 4.2.0
+          r-version: 4.1.0
 
       - name: Install shiny.exe
         run: install.packages("shiny.exe",repos=NULL)
