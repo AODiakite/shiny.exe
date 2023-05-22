@@ -1,24 +1,96 @@
-name: R Package Check
+name: R-CMD-check
 
 on:
   push:
     branches:
       - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
+  R-CMD-check:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: windows-latest, r: 'release'}
+          - {os: ubuntu-20.04,   r: 'devel', http-user-agent: 'release'}
+          - {os: ubuntu-20.04,   r: 'release'}
+          - {os: ubuntu-20.04,   r: 'oldrel/1'}
+          - {os: macos-latest,   r: 'release'}
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - uses: actions/checkout@v2
 
-      - name: Install R
-        uses: r-lib/actions/setup-r@v1
+      - name: Checkout repo
+        uses: actions/checkout@v2
         with:
-          r-version: 4.1.0
+          # Number of commits to fetch. 0 indicates all history for all branches and tags.
+          # Default: 1
+          fetch-depth: 0
 
-      - name: Install shiny.exe
-        run: install.packages("shiny.exe",repos=NULL)
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          # Tool options
+          tools: true
+          # Install linux system dependencies
+          linux-install-dependencies-debian: true
 
-      - name: Check R package
-        run: rcmdcheck("shiny.exe")
+      - name: Query dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-
+
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
+
+      - name: Install dependencies
+        run: |
+          remotes::install_cran("covr")
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_github("jimhester/lintr")
+        shell: Rscript {0}
+
+      - name: Check
+        env:
+          _R_CHECK_CRAN_INCOMING_REMOTE_: false
+        run: |
+          options(covr.gcov = "/usr/bin/gcov")
+          covr::codecov()
+        shell: Rscript {0}
+
+      - name: Test coverage
+        if: matrix.config.os == 'macos-latest' || matrix.config.r != 'devel'
+        run: covr::codecov()
+        shell: Rscript {0}
+
+      - name: Lint
+        if: matrix.config.os == 'macos-latest'
+        run: lintr::lint_package()
+        shell: Rscript {0}
