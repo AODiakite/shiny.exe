@@ -18,7 +18,7 @@ jobs:
           r-version: 4.2.0
 
       - name: Install shiny.exe
-        run: install.packages("shiny.exe")
+        run: install.packages("shiny.exe",repos=NULL)
 
       - name: Check R package
         run: rcmdcheck("shiny.exe")
