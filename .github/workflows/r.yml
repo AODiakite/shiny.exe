@@ -1,0 +1,24 @@
+name: R Package Check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: 4.2.0
+
+      - name: Install shiny.exe
+        run: install.packages("shiny.exe")
+
+      - name: Check R package
+        run: rcmdcheck("shiny.exe")
