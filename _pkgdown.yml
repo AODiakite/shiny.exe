@@ -1,9 +1,10 @@
 url: https://github.com/AODiakite/shiny.exe
 template:
-  package: rbitemplate
   bootstrap: 5
+  bootswatch: cerulean
 navbar:
   structure:
+    left:  [articles,intro, reference, tutorials, news]
     right: [twitter, github]
   components:
     twitter:
@@ -23,7 +24,4 @@ home:
     href: https://website.com
   - text: Roadmap
     href: /roadmap.html
-navbar:
-  structure:
-    left:  [articles,intro, reference, tutorials, news]
 
