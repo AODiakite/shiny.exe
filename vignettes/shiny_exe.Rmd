@@ -1,25 +1,51 @@
 ---
 title: "Introduction to shiny.exe"
 output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{shiny_exe}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
-# Documentation
+## Description
 
-This package aims to launch an application by a simple click without opening R or RStudio. The package has 2 functions of which only one is essential in its use, `shiny.exe()`. It generates a script in the open shiny project then creates a task that executes this script. After creating the task, the function is responsible for creating a shortcut in the same folder that allows you to launch the task by clicking.If you set `host = 'public'`, the application will be launched on the public server to which you are connected. Thus, all other devices connected to the same server will be able to access the application through the link of your IPv4 extended by the port. You can stop the application by leaving the terminal opened by the shortcut.
+The shiny.exe package allows you to create standalone executables for your Shiny applications. This can be useful for distributing your applications to users who are new to R.
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+To use `shiny.exe()`, you first need to create a Shiny application. Once you have created your application, you can use the shiny.exe function to create an executable (.bat file). The shiny.exe function takes a number of arguments, including the name of your application, the path to your application, and the port number on which you want to run your application.
+
+Once you have created your executable, you can run it by double-clicking on it. Your Shiny application will then open in your default web browser.
+
+The shiny.exe package is a great way to make your Shiny applications more accessible to users. It is easy to use and it can help you to distribute your applications to a wider audience.
+
+## Installation
+
+The `{shiny.exe}` package is available on CRAN. To install it, you can use the following command:
+
+
+```{r eval=FALSE}
+install.packages("shiny.exe")
+
 ```
 
+## Usage
 
-```{r setup}
+The `shiny.exe()` function takes a number of arguments, including the name of your application, the path to your application, and the port number on which you want to run your application. If you set 'host = ’public'', the application will be launched on the public server to which you are connected. Thus, all other devices connected to the same server will be able to access the application through the link of your 'IPv4' extended by the port.
+
+The following is an example of how to use the shiny.exe function:
+
+```{r eval=FALSE}
 library(shiny.exe)
-shiny.exe(appName = "MyApp",host = "Public",port = 4576)
+shiny.exe(appName = "MyApp", port = 3838,host = 'public',  appDir = "/path/to/my/app")
 ```
+
+This will generates a script "MyApp.R" in the open shiny project then create a shortcut in the same folder called "MyApp.bat" on windows, "MyApp.command" on MacOS, "MyApp.sh" on Lunix. You can then run the application by double-clicking on the executable.
+
+If you are running this function in a shiny project, you don't need to specify the `appDir` parameter.In case you do not publish this application in a public server, the `host` and `port` parameters may not be specified.
+
+## Contributing
+
+If you would like to contribute to the shiny.exe package, you can do so by submitting a pull request on [GitHub.](https://github.com/AODiakite/shiny.exe) Please make sure to follow the coding style guide and to test your changes before submitting them.
+
+## Bugs and Issues
+
+For the Unix version of the package (MacOS and Linux), the `appDir` and `appName` parameters must not contain spaces. This is one of the limits of the package on these two operating systems.
+
+If you find any bugs or issues with the shiny.exe package, please report them on GitHub. You can find the issue tracker at the following [URL](https://github.com/AODiakite/shiny.exe/issues).
+
+
