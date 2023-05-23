@@ -1,7 +1,6 @@
 url: https://github.com/AODiakite/shiny.exe
 template:
   bootstrap: 5
-  bootswatch: cerulean
 navbar:
   structure:
     left:  [articles,intro, reference, tutorials, news]
