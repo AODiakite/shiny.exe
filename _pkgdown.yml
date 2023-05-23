@@ -1,26 +1,4 @@
 url: https://github.com/AODiakite/shiny.exe
 template:
   bootstrap: 5
-navbar:
-  structure:
-    left:  [articles,intro, reference, tutorials, news]
-    right: [twitter, github]
-  components:
-    twitter:
-      icon: fa-twitter
-      href: https://twitter.com/abdouloudouss
-      aria-label: Twitter
-    github:
-      icon: fa-github
-      href: https://github.com/AODiakite
-      aria-label: github
-home:
-  sidebar:
-    structure: [links, license, community, citation, authors, dev]
-  home:
-  links:
-  - text: Link text
-    href: https://website.com
-  - text: Roadmap
-    href: /roadmap.html
 
